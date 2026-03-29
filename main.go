@@ -12,14 +12,11 @@ func main() {
 	defer db.Close()
 
 	_, err := db.Exec(`
-		CREATE TABLE IF NOT EXISTS users (
-			id SERIAL PRIMARY KEY,
-			name VARCHAR(100) NOT NULL,
-			email VARCHAR(255) NOT NULL UNIQUE
-		)
-	`)
+		INSERT INTO users (name, email)
+		VALUES ($1, $2)
+	`, "Alice", "alice@example.com")
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println("Table created!")
+	log.Println("Inserted!")
 }
