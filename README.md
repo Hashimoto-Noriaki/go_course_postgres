@@ -9,3 +9,8 @@ docker compose up
 ```bash
  docker exec -it go_course_postgres psql -U  user -d go_course
 ```
+
+## データ確認
+```
+docker exec -it go_course_postgres psql -U user -d go_course -c "SELECT *
+```
